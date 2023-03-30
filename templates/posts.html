@@ -1,0 +1,90 @@
+{% extends 'flatpages/default.html' %}
+{% load custom_filters %}
+{% load custom_tags %}
+{% load cache %}
+
+{% block content %}
+
+    <h1>Все новости</h1>
+    <h3> {{time_now|date:'M d Y'}}</h3>
+    {% if posts %}
+        Количество новостей: {{ posts|length }}
+    {% else %}
+        Новостей нет
+    {% endif %}
+    {% if is_not_subscriber %}
+         <p class="text-center"><a href="{% url 'subscribe' category.id  %}" class="btn btn-secondary btn-sn">Подписаться</a> </p>
+    {% endif %}
+    <hr>
+     <a href="{% url 'news_search' %}">Найти что вам нужно</a>
+
+    <hr>
+     {% if perms.news.add_post %}
+        <a href="{% url 'post_create' %}">Добавить новость</a>
+     {% endif %}
+    {% if perms.news.add_article %}
+        <a href="{% url 'article_create' %}">Добавить статью</a>
+    {% endif %}
+    {% cache 180 header %}
+    {% block header %}
+    {% if posts %}
+        <table>
+            <tr>
+                <td>Тип информации</td>
+                <td>Заголовок</td>
+                <td>Категория</td>
+                <td>Дата публикации</td>
+                <td>Текст</td>
+                {% if perms.news.change_post or perms.news.delete_post or perms.news.change_article or perms.news.delete_article %}
+                <td>Действия</td>
+                {% endif %}
+            </tr>
+            {% for post in posts %}
+            <tr>
+                <td>{{ post.categoryType }}</td>
+                <td>{{ post.title|censor }}</td>
+                <td>{{ post.dateCreation }}</td>
+                <td>{{ post.text|truncatechars:20|censor }}</td>
+                <td>
+                   {% if perms.news.change_post and post.categoryType == 'NW' %}
+                    <a href="{% url 'post_update' pk=post.id  %}">Изменить</a>
+                    {% endif %}
+                     {% if perms.news.delete_post and post.categoryType == 'NW' %}
+                    <a href="{% url 'post_delete' post.id %}">Удалить</a>
+                    {% endif %}
+
+                     {% if perms.news.change_article and post.categoryType == 'AR' %}
+                     <a href="{% url 'article_update' pk=post.id  %}">Изменить</a>
+                    {% endif %}
+                     {% if perms.news.delete_article and post.categoryType == 'AR'%}
+                    <a href="{% url 'article_delete' post.id  %}">Удалить</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <h2>Новостей нет!</h2>
+    {% endif %}
+    {% endblock header %}
+    {% endcache %}
+
+    {% if page_obj.has_previous %}
+      <a href="?{% url_replace page=1 %}">1</a>
+       {% if page_obj.previous_page_number != 1 %}
+           ...
+           <a href="?{% url_replace page=page_obj.previous_page_number %}">{{ page_obj.previous_page_number }}</a>
+       {% endif %}
+   {% endif %}
+
+   {{ page_obj.number }}
+
+   {% if page_obj.has_next %}
+       <a href="?{% url_replace page=page_obj.next_page_number %}">{{ page_obj.next_page_number }}</a>
+       {% if paginator.num_pages != page_obj.next_page_number %}
+           ...
+           <a href="?{% url_replace page=page_obj.paginator.num_pages %}">{{ page_obj.paginator.num_pages }}</a>
+       {% endif %}
+   {% endif %}
+
+{% endblock content %}
