@@ -1,0 +1,106 @@
+2023-03-31 13:10:56,488 ERROR Internal Server Error: /posts/articles/18/edit/
+D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\venv\Lib\site-packages\django\utils\log.py
+(<class 'AttributeError'>, AttributeError("'Post' object has no attribute 'category'"), <traceback object at 0x00000182E76F0180>)
+Traceback (most recent call last):
+  File "D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\venv\Lib\site-packages\django\views\generic\base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\venv\Lib\site-packages\django\contrib\auth\mixins.py", line 109, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\venv\Lib\site-packages\django\views\generic\base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\venv\Lib\site-packages\django\views\generic\edit.py", line 208, in post
+    return super().post(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\venv\Lib\site-packages\django\views\generic\edit.py", line 153, in post
+    return self.form_valid(form)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\venv\Lib\site-packages\django\views\generic\edit.py", line 135, in form_valid
+    self.object = form.save()
+                  ^^^^^^^^^^^
+  File "D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\venv\Lib\site-packages\django\forms\models.py", line 549, in save
+    self._save_m2m()
+  File "D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\venv\Lib\site-packages\django\forms\models.py", line 530, in _save_m2m
+    f.save_form_data(self.instance, cleaned_data[f.name])
+  File "D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\venv\Lib\site-packages\django\db\models\fields\related.py", line 1966, in save_form_data
+    getattr(instance, self.attname).set(data)
+  File "D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\venv\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 1169, in set
+    self.add(*new_objs, through_defaults=through_defaults)
+  File "D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\venv\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 1087, in add
+    self._add_items(
+  File "D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\venv\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 1373, in _add_items
+    signals.m2m_changed.send(
+  File "D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\venv\Lib\site-packages\django\dispatch\dispatcher.py", line 176, in send
+    return [
+           ^
+  File "D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\venv\Lib\site-packages\django\dispatch\dispatcher.py", line 177, in <listcomp>
+    (receiver, receiver(signal=self, sender=sender, **named))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\newspaper\news\signals.py", line 26, in post_created
+    categories = instance.category.all
+                 ^^^^^^^^^^^^^^^^^
+AttributeError: 'Post' object has no attribute 'category'
+2023-03-31 13:10:56,553 ERROR "POST /posts/articles/18/edit/ HTTP/1.1" 500 139435
+D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\venv\Lib\site-packages\django\core\servers\basehttp.py
+None
+2023-03-31 13:11:13,946 ERROR Internal Server Error: /posts/articles/18/edit/
+D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\venv\Lib\site-packages\django\utils\log.py
+(<class 'AttributeError'>, AttributeError("'Post' object has no attribute 'category'"), <traceback object at 0x00000182E7A38180>)
+Traceback (most recent call last):
+  File "D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\venv\Lib\site-packages\django\views\generic\base.py", line 103, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\venv\Lib\site-packages\django\contrib\auth\mixins.py", line 109, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\venv\Lib\site-packages\django\views\generic\base.py", line 142, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\venv\Lib\site-packages\django\views\generic\edit.py", line 208, in post
+    return super().post(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\venv\Lib\site-packages\django\views\generic\edit.py", line 153, in post
+    return self.form_valid(form)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\venv\Lib\site-packages\django\views\generic\edit.py", line 135, in form_valid
+    self.object = form.save()
+                  ^^^^^^^^^^^
+  File "D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\venv\Lib\site-packages\django\forms\models.py", line 549, in save
+    self._save_m2m()
+  File "D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\venv\Lib\site-packages\django\forms\models.py", line 530, in _save_m2m
+    f.save_form_data(self.instance, cleaned_data[f.name])
+  File "D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\venv\Lib\site-packages\django\db\models\fields\related.py", line 1966, in save_form_data
+    getattr(instance, self.attname).set(data)
+  File "D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\venv\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 1169, in set
+    self.add(*new_objs, through_defaults=through_defaults)
+  File "D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\venv\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 1087, in add
+    self._add_items(
+  File "D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\venv\Lib\site-packages\django\db\models\fields\related_descriptors.py", line 1373, in _add_items
+    signals.m2m_changed.send(
+  File "D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\venv\Lib\site-packages\django\dispatch\dispatcher.py", line 176, in send
+    return [
+           ^
+  File "D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\venv\Lib\site-packages\django\dispatch\dispatcher.py", line 177, in <listcomp>
+    (receiver, receiver(signal=self, sender=sender, **named))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\newspaper\news\signals.py", line 26, in post_created
+    categories = instance.category.all
+                 ^^^^^^^^^^^^^^^^^
+AttributeError: 'Post' object has no attribute 'category'
+2023-03-31 13:11:14,001 ERROR "POST /posts/articles/18/edit/ HTTP/1.1" 500 139435
+D:\PycharmProjects\Newspaper на гит\proffesor_newspaper-version-2-main\venv\Lib\site-packages\django\core\servers\basehttp.py
+None
